@@ -5,10 +5,17 @@ import (
 	"io/ioutil"
 )
 
+type UserPageConfig struct {
+	TriggerRegex  string `json:"triggerregex"`
+	NameRegex     string `json:"nameregex"`
+	PositionRegex string `json:"positionregex"`
+}
+
 type CrawlConfig struct {
-	Onion   string   `json:"onion"`
-	Base    string   `json:"base"`
-	Exclude []string `json:"exclude"`
+	Onion    string         `json:"onion"`
+	Base     string         `json:"base"`
+	Exclude  []string       `json:"exclude"`
+	UserPage UserPageConfig `json:"userpage"`
 }
 
 func LoadCrawlConfig(filename string) (CrawlConfig, error) {
